@@ -1,6 +1,7 @@
 Feature: login a user
   As a user
   I want to login to my dashboard
+  So that I can access jobtriage services
 
   Background:
     Given the user has signed up with name "user1", email "user1@gmail.com" password "password"
@@ -13,10 +14,10 @@ Feature: login a user
   Scenario: login with invalid credentials
     When user logs in with following credentials:
       | email    | user1@gmail.com |
-      | password | passwo       |
+      | password | passwo          |
     Then an error message "Authentication failed check input" should be displayed
 
-  Scenario: login  with blank email
+  Scenario: login with blank email
     When user logs in with following credentials:
       | email    |          |
       | password | password |
