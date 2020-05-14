@@ -12,4 +12,8 @@ module.exports = {
     I.fillField(this.fields.password, password);
     I.click('Login');
   },
+  text:
+  {
+    error : "//form/p[@class='makeStyles-error-5']"
+  },
 };
