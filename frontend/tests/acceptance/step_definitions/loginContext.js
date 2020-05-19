@@ -30,7 +30,7 @@ Given("the user has browsed to the login page", () => {
 });
 
 Then("the user should be redirected to the dashboard page", () => {
-  I.amOnPage(dashboardPage.url);
+  I.amOnPage(dashboard.url);
 });
 
 When("user logs in with following credentials:", (table) => {
