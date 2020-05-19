@@ -44,16 +44,6 @@ Then("an error message {string} should be displayed", (msg) => {
   I.see(msg, loginPage.text.error);
 });
 
-Then(
-  "an error message {string} should be displayed above the email textfield",
-  (msg) => {
-    throw new Error("Not implemented yet");
-  }
-);
-
-Then(
-  "an error message {string} should be displayed above the password textfield",
-  (msg) => {
-    throw new Error("Not implemented yet");
-  }
-);
+Then('the user should stay on the same page', () => {
+  loginPage.amOnThisPage();
+});

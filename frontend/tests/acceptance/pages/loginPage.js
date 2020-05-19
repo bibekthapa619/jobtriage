@@ -9,7 +9,7 @@ module.exports = {
       '//label[contains(text(),"password")]/parent::div/div/input[contains(@class, "MuiInputBase-input")]',
   },
   buttons: {
-    login: "Login",
+    login: "//button[@type='submit']",
   },
   login(email, password) {
     this.fillEmail(email);
@@ -29,4 +29,8 @@ module.exports = {
   clickLogin() {
     I.click(this.buttons.login);
   },
+  amOnThisPage()
+  {
+    I.seeElement(this.buttons.login);
+  }
 };

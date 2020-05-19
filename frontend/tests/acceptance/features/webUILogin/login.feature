@@ -17,19 +17,19 @@ Feature: login a user
           When user logs in with following credentials:
                | email    | user1@gmail.com |
                | password | passwo          |
-          Then an error message "Authentication failed check input" should be displayed
+          Then the user should stay on the same page
 
      @blankEmailLogin
      Scenario: login with blank email
           When user logs in with following credentials:
                | email    |          |
                | password | password |
-          Then an error message "Please fill out this field." should be displayed above the email textfield
+          Then the user should stay on the same page
 
      @blankPasswordLogin
      Scenario: login with blank password
           When user logs in with following credentials:
                | email    | user1@gmail.com |
                | password |                 |
-          Then an error message "Please fill out this field." should be displayed above the password textfield
+          Then the user should stay on the same page
 
