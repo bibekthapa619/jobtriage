@@ -17,19 +17,19 @@ Feature: login a user
           When user logs in with following credentials:
                | email    | user1@gmail.com |
                | password | passwo          |
-          Then the user should stay on the same page
+          Then the user should stay on the login page
 
      @blankEmailLogin
      Scenario: login with blank email
           When user logs in with following credentials:
                | email    |          |
                | password | password |
-          Then the user should stay on the same page
+          Then the user should stay on the login page
 
      @blankPasswordLogin
      Scenario: login with blank password
           When user logs in with following credentials:
                | email    | user1@gmail.com |
                | password |                 |
-          Then the user should stay on the same page
+          Then the user should stay on the login page
 
