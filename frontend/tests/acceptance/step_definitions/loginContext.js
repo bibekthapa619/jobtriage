@@ -2,6 +2,9 @@ const { I } = inject();
 const loginPage = require("../pages/loginPage");
 const dashboard = require("../pages/dashboardPage");
 const signupPage = require("../pages/signupPage");
+const globals = require("../helpers/globals.js");
+const axios = require("axios");
+const apiUrl = process.env.REACT_APP_SERVER_URL || "http://localhost:3000";
 
 Given("the user has browsed to the homepage", () => I.amOnPage("/"));
 
@@ -39,3 +42,16 @@ Then("an error message {string} should be displayed", (msg) => {
 Then("the user should stay on the login page", () => {
   loginPage.amOnThisPage();
 });
+
+After( ()=>{
+  console.log(globals.users)
+  globals.users.forEach(async element => {    
+    let res = await axios
+      .post(`${apiUrl}/auth/deleteuser`, { email:element })
+      
+    // res = await res.json();
+    console.log(res.data);
+  });
+  globals.users = []
+  
+})

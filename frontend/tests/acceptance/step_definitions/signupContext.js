@@ -1,20 +1,22 @@
 const { I } = inject();
 const axios = require("axios");
 const signupPage = require("../pages/signupPage");
-
+const globals = require("../helpers/globals.js");
 const apiUrl = process.env.REACT_APP_SERVER_URL || "http://localhost:3000";
 
 Given(
   "the user has signed up with name {string}, email {string} password {string}",
   (name, email, password) => {
+    console.log("background")
     axios
       .post(`${apiUrl}/auth/register`, { name, email, password })
       .then((res) => {
         console.log("Response:", res);
       })
       .catch((e) => {
-        console.log(e);
+        // console.log(e);
       });
+      globals.users.push(email);
   }
 );
 
