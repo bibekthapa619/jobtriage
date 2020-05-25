@@ -4,7 +4,7 @@ const dashboard = require("../pages/dashboardPage");
 const signupPage = require("../pages/signupPage");
 const globals = require("../helpers/globals.js");
 const axios = require("axios");
-const apiUrl = process.env.REACT_APP_SERVER_URL || "http://localhost:3000";
+const constants = require("../../constants");
 
 Given("the user has browsed to the homepage", () => I.amOnPage("/"));
 
@@ -47,7 +47,7 @@ After( ()=>{
   console.log(globals.users)
   globals.users.forEach(async element => {    
     let res = await axios
-      .post(`${apiUrl}/auth/deleteuser`, { email:element })
+      .post(`${constants.apiUrl}/auth/deleteuser`, { email:element })
       
     // res = await res.json();
     console.log(res.data);
