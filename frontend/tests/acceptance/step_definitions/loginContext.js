@@ -3,19 +3,22 @@ const loginPage = require("../pages/loginPage");
 const dashboard = require("../pages/dashboardPage");
 const signupPage = require("../pages/signupPage");
 const globals = require("../helpers/globals.js");
-const axios = require("axios");
-const constants = require("../../constants");
+const user = require("../helpers/api/user");
 
 Given("the user has browsed to the homepage", () => I.amOnPage("/"));
 
-When("the user signs up with name {string}, email {string} password {string} and confirmation password {string} using the webUI", (name, email, password, confirmationPassword) => {
+When(
+  "the user signs up with name {string}, email {string} password {string} and confirmation password {string} using the webUI",
+  (name, email, password, confirmationPassword) => {
     signupPage.signUp(name, email, password, confirmationPassword);
   }
 );
 
 When("the user browses to the login page", () => I.amOnPage(loginPage.url));
 
-When(  "the user logs in with email {string} and password {string} using the webUI", (email, password) => {
+When(
+  "the user logs in with email {string} and password {string} using the webUI",
+  (email, password) => {
     loginPage.login(email, password);
   }
 );
@@ -43,15 +46,10 @@ Then("the user should stay on the login page", () => {
   loginPage.amOnThisPage();
 });
 
-After( ()=>{
-  console.log(globals.users)
-  globals.users.forEach(async element => {    
-    let res = await axios
-      .post(`${constants.apiUrl}/auth/deleteuser`, { email:element })
-      
-    // res = await res.json();
-    console.log(res.data);
+After(() => {
+  console.log(globals.users);
+  globals.users.forEach(async (element) => {
+    user.delete(element);
   });
-  globals.users = []
-  
-})
+  globals.users = [];
+});
