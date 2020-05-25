@@ -4,9 +4,9 @@ module.exports = {
   url: '/login',
   fields: {
     email:
-      '//label[contains(text(),"email")]/parent::div/div/input[contains(@class, "MuiInputBase-input")]',
+      '//label[contains(text(),"Email")]/parent::div/div/input[contains(@class, "MuiInputBase-input")]',
     password:
-      '//label[contains(text(),"password")]/parent::div/div/input[contains(@class, "MuiInputBase-input")]',
+      '//label[contains(text(),"Password")]/parent::div/div/input[contains(@class, "MuiInputBase-input")]',
   },
   buttons: {
     login: "//button[@type='submit']",
@@ -14,6 +14,7 @@ module.exports = {
   login(email, password) {
     this.fillEmail(email);
     this.fillPassword(password);
+    this.clickLogin();
   },
   text: {
     error: "//form/p[@class='makeStyles-error-5']",
