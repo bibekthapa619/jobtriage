@@ -5,14 +5,15 @@ const signupPage = require("../pages/signupPage");
 const globals = require("../helpers/globals.js");
 const user = require("../helpers/api/user");
 
-Given("the user has browsed to the homepage", () => I.amOnPage("/"));
-
-When(
-  "the user signs up with name {string}, email {string} password {string} and confirmation password {string} using the webUI",
-  (name, email, password, confirmationPassword) => {
-    signupPage.signUp(name, email, password, confirmationPassword);
+Given(
+  "the user has signed up with name {string}, email {string} password {string}",
+  (name, email, password) => {
+    user.register(name, email, password);
+    globals.users.push(email);
   }
 );
+
+Given("the user has browsed to the homepage", () => I.amOnPage("/"));
 
 When("the user browses to the login page", () => I.amOnPage(loginPage.url));
 
