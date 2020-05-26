@@ -1,8 +1,37 @@
-language: ruby
+language:
+  - node_js
+  - ruby
+node_js:
+  - 12
 rvm:
   - 2.5.5
-script:
-  - bundle exec rails test
+sudo: required
 services:
   - mongodb
-  
+env:
+  global:
+    - SERVER_URL=172.17.0.1:3000
+    - LAUNCH_URL=172.17.0.1:3001
+# services:
+#   - docker
+before_install:
+  - sudo apt-get install chromium-browser
+  - rvm install 2.5.5
+  - rvm use 2.5.5
+
+install:
+  - gem install bundler
+  - npm install yarn
+  - bundle install
+  - cd $TRAVIS_BUILD_DIR/frontend/
+  - yarn install
+  - cd $TRAVIS_BUILD_DIR/
+before_script:
+  - rails s &
+  - cd $TRAVIS_BUILD_DIR/frontend/
+  - yarn start &
+  - cd $TRAVIS_BUILD_DIR/
+script:
+  # - bundle exec rails test
+  - cd $TRAVIS_BUILD_DIR/frontend/
+  - npx codeceptjs run --steps
