@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   get  'auth/resend',        to: 'auth#resend_email'
   post 'auth/change',        to: 'auth#change_password'
   post 'auth/generateotp',   to: 'auth#generate_otp'
+  post 'auth/deleteuser',    to: 'auth#delete_user'
   post 'auth/verifyotp',     to: 'auth#verify_otp'
   # Routes for auth ends
 

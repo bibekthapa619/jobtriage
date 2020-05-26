@@ -1,5 +1,5 @@
 class AuthController < ApplicationController
-  skip_before_action :authenticate_request, only: %i[login register verify_email generate_otp verify_otp] 
+  skip_before_action :authenticate_request, only: %i[login delete_user register verify_email generate_otp verify_otp] 
 
   # POST /register
   def register
@@ -12,6 +12,18 @@ class AuthController < ApplicationController
       render json: response, status: :ok
     else
       render json: { message: @user.errors }, status: :bad_request
+    end
+  end
+
+  def delete_user
+    @mail = params[:email]
+    @res = User.delete_all( { email: @mail } )
+    if @res == 1
+      response = { message: "'"+@mail+"' deleted" }
+      render json: response, status: :ok
+    else
+      response = { message: "Cannot find user '"+@mail+"'"}
+      render json: response
     end
   end
 
