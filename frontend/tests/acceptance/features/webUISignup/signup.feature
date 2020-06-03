@@ -1,7 +1,7 @@
 Feature: Signup a user
   As a user
   I want to signup and create my account
-  so that I can login to the application
+  So that I can log in to the application
 
   Background: browse to signup page
     Given the user has browsed to signup page

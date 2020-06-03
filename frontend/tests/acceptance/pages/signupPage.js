@@ -9,9 +9,9 @@ module.exports = {
     confirmPassword: '//label[contains(text(),"Confirm password")]/parent::div//input[contains(@class, "MuiInputBase-input")]',
   },
   elements: {
-    error_lbl: '//form/p[@class="makeStyles-error-5"]',
-    login_lbl: '//form/p/span[contains(@class,"makeStyles-span-7")]',
-    signup_btn: '//form/button/span[contains(.,"Sign Up")]',
+    error_label: '//form/p[@class="makeStyles-error-5"]',
+    login_label: '//form/p/span[contains(@class,"makeStyles-span-7")]',
+    signup_button: '//form/button/span[contains(.,"Sign Up")]',
   },
   async signUp(name, email, password, confirmPassword) {
     await I.waitForElement(this.fields.name);
@@ -22,8 +22,8 @@ module.exports = {
     await I.fillField(this.fields.password, password);
     await I.waitForElement(this.fields.confirmPassword);
     await I.fillField(this.fields.confirmPassword, confirmPassword);
-    await I.waitForElement(this.elements.signup_btn);
-    await I.click(this.elements.signup_btn);
+    await I.waitForElement(this.elements.signup_button);
+    await I.click(this.elements.signup_button);
   },
   tryInvalidSignup(name, email, password, confirmPassword) {
     this.fillname(name);
@@ -49,11 +49,11 @@ module.exports = {
     I.fillField(this.fields.confirmPassword, confirmPassword);
   },
   clickSignUp() {
-    I.waitForElement(this.elements.signup_btn);
-    I.click(this.elements.signup_btn);
+    I.waitForElement(this.elements.signup_button);
+    I.click(this.elements.signup_button);
   },
   goToLogin() {
-    I.waitForElement(this.elements.login_lbl);
-    I.click(this.elements.login_lbl);
+    I.waitForElement(this.elements.login_label);
+    I.click(this.elements.login_label);
   },
 };

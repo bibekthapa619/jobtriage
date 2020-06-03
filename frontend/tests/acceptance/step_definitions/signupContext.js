@@ -3,7 +3,7 @@ const signupPage = require("../pages/signupPage");
 const loginPage = require("../pages/loginPage");
 const dashboard = require("../pages/dashboardPage");
 const { users } = require("../globals");
-const { registerUser, deleteUser, loginUser } = require("../api");
+const { registerUser, deleteUser, loginUser } = require("../helpers/apiHelper");
 
 const ELEMENT = signupPage.elements;
 const FIELD = signupPage.fields;
@@ -45,7 +45,7 @@ When("the user tries to go to login page", () => {
 });
 
 Then("the user should be redirected to login page", () => {
-  I.dontSee(ELEMENT.signup_btn);
+  I.dontSee(ELEMENT.signup_button);
   I.dontSeeInCurrentUrl(signupPage.url);
   I.seeInCurrentUrl(loginPage.url);
 });
@@ -69,18 +69,18 @@ Then(
 );
 
 Then("an invalid email message {string} should be displayed", (message) => {
-  I.waitForElement(ELEMENT.error_lbl);
-  I.see(message, ELEMENT.error_lbl);
+  I.waitForElement(ELEMENT.error_label);
+  I.see(message, ELEMENT.error_label);
 });
 
 Then("a password mis-match error message {string} should be displayed", (message) => {
-  I.waitForElement(ELEMENT.error_lbl);
-  I.see(message, ELEMENT.error_lbl);
+  I.waitForElement(ELEMENT.error_label);
+  I.see(message, ELEMENT.error_label);
 });
 
 Then("an already registered error message {string} should be displayed", (message) => {
-  I.waitForElement(ELEMENT.error_lbl);
-  I.see(message, ELEMENT.error_lbl);
+  I.waitForElement(ELEMENT.error_label);
+  I.see(message, ELEMENT.error_label);
 });
 
 After(() => {
