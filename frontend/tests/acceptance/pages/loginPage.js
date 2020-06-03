@@ -3,8 +3,8 @@ const { I } = inject();
 module.exports = {
   url: '/login',
   fields: {
-    email: '//label[contains(text(),"Email")]/parent::div/div/input[contains(@class, "MuiInputBase-input")]',
-    password: '//label[contains(text(),"Password")]/parent::div/div/input[contains(@class, "MuiInputBase-input")]',
+    email: '//label[contains(text(),"Email")]/parent::div//input[contains(@class, "MuiInputBase-input")]',
+    password: '//label[contains(text(),"Password")]/parent::div//input[contains(@class, "MuiInputBase-input")]',
   },
   buttons: {
     login: "//button[@type='submit']",

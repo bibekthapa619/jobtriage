@@ -31,9 +31,11 @@ Given("the user has browsed to the login page", () => {
   I.amOnPage(loginPage.url);
 });
 
-When("user logs in with following credentials:", (table) => {
-  email = table.rows[0].cells[1].value;
-  password = table.rows[1].cells[1].value;
+When("the user logs in with the following credentials:", (table) => {
+  let tableData = {};
+  table.parse().raw().forEach(function(data) { tableData[data[0]] = data[1] });
+  email = tableData.email;
+  password = tableData.password;
   loginPage.login(email, password);
 });
 

@@ -4,31 +4,31 @@ Feature: login a user
      So that I can access jobtriage services
 
      Background:
-          Given the user has signed up with name "user14", email "user7771@gmail.com" password "password"
+          Given the user has signed up with name "user1", email "user1@gmail.com" password "password"
           And the user has browsed to the login page
 
      @validLogin
      Scenario: login a valid user
-          When the user logs in with email "user7771@gmail.com" and password "password" using the webUI
+          When the user logs in with email "user1@gmail.com" and password "password" using the webUI
           Then the user should be redirected to the dashboard page
 
      @invalidLogin
      Scenario: login with invalid credentials
-          When user logs in with following credentials:
+          When the user logs in with the following credentials:
                | email    | user1@gmail.com |
                | password | passwo          |
           Then the user should stay on the login page
 
      @blankEmailLogin
      Scenario: login with blank email
-          When user logs in with following credentials:
+          When the user logs in with the following credentials:
                | email    |          |
                | password | password |
           Then the user should stay on the login page
 
      @blankPasswordLogin
      Scenario: login with blank password
-          When user logs in with following credentials:
+          When the user logs in with the following credentials:
                | email    | user1@gmail.com |
                | password |                 |
           Then the user should stay on the login page
