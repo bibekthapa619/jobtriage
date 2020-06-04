@@ -2,12 +2,12 @@ const { I } = inject();
 const loginPage = require("../pages/loginPage");
 const dashboard = require("../pages/dashboardPage");
 const globals = require("../helpers/globals.js");
-const user = require("../helpers/api/user");
+const userAPI = require("../helpers/api/user");
 
 Given(
   "the user has signed up with name {string}, email {string} password {string}",
   async (name, email, password) => {
-    await user.register(name, email, password);
+    await userAPI.register(name, email, password);
     globals.users.push({ email: email, password: password });
   }
 );
@@ -39,9 +39,9 @@ When("the user logs in with the following credentials:", (table) => {
   loginPage.login(email, password);
 });
 
-Then("an error message {string} should be displayed", (msg) => {
+Then("an error message {string} should be displayed", (message) => {
   I.seeElement(loginPage.text.error);
-  I.see(msg, loginPage.text.error);
+  I.see(message, loginPage.text.error);
 });
 
 Then("the user should stay on the login page", () => {
@@ -49,8 +49,8 @@ Then("the user should stay on the login page", () => {
 });
 
 After(() => {
-  globals.users.forEach(async (element) => {
-    await user.delete(element.email, element.password);
+  globals.users.forEach(async (user) => {
+    await userAPI.delete(user.email, user.password);
   });
   globals.users = [];
 });
