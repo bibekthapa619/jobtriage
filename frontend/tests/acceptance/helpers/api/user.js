@@ -15,9 +15,9 @@ module.exports = {
         Status: ${error.response.statusText}`);
     }
   },
-  login: async (email, password) => {
+  login: (email, password) => {
     try {
-      await axios
+      axios
         .post(`${constants.apiUrl}/auth/login/`, {
           email,
           password,
@@ -29,9 +29,9 @@ module.exports = {
         Status: ${error.response.statusText}`);
     }
   },
-  delete: async (email, password) => {
+  delete: (email, password) => {
     try {
-      await axios
+      axios
         .delete(`${constants.apiUrl}/auth/deleteuser`, {
           params: { email: email, password: password },
         })
