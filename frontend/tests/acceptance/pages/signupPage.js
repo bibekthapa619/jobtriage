@@ -6,7 +6,8 @@ module.exports = {
     name: '//label[contains(text(),"Name")]/parent::div//input[contains(@class, "MuiInputBase-input")]',
     email: '//label[contains(text(),"Email")]/parent::div//input[contains(@class, "MuiInputBase-input")]',
     password: '//label[contains(text(),"Password")]/parent::div//input[contains(@class, "MuiInputBase-input")]',
-    confirmPassword: '//label[contains(text(),"Confirm password")]/parent::div//input[contains(@class, "MuiInputBase-input")]',
+    confirmPassword:
+      '//label[contains(text(),"Confirm password")]/parent::div//input[contains(@class, "MuiInputBase-input")]',
   },
   elements: {
     error_label: '//form/p[@class="makeStyles-error-5"]',
@@ -14,23 +15,11 @@ module.exports = {
     signup_button: '//form/button/span[contains(.,"Sign Up")]',
   },
   async signUp(name, email, password, confirmPassword) {
-    await I.waitForElement(this.fields.name);
-    await I.fillField(this.fields.name, name);
-    await I.waitForElement(this.fields.email);
-    await I.fillField(this.fields.email, email);
-    await I.waitForElement(this.fields.password);
-    await I.fillField(this.fields.password, password);
-    await I.waitForElement(this.fields.confirmPassword);
-    await I.fillField(this.fields.confirmPassword, confirmPassword);
-    await I.waitForElement(this.elements.signup_button);
-    await I.click(this.elements.signup_button);
-  },
-  tryInvalidSignup(name, email, password, confirmPassword) {
     this.fillname(name);
     this.fillEmail(email);
     this.fillPassword(password);
     this.fillConfirmPassword(confirmPassword);
-    this.clickSignUp();
+    await this.clickSignUp();
   },
   fillname(name) {
     I.waitForElement(this.fields.name);
@@ -48,9 +37,9 @@ module.exports = {
     I.waitForElement(this.fields.confirmPassword);
     I.fillField(this.fields.confirmPassword, confirmPassword);
   },
-  clickSignUp() {
+  async clickSignUp() {
     I.waitForElement(this.elements.signup_button);
-    I.click(this.elements.signup_button);
+    await I.click(this.elements.signup_button);
   },
   goToLogin() {
     I.waitForElement(this.elements.login_label);

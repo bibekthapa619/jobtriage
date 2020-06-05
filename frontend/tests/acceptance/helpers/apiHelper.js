@@ -13,7 +13,11 @@ module.exports = {
           return console.log(data.message);
         })
         .catch((err) =>
-          console.log(`Cannot register new user\nError: ${err.response.status}. ${err.response.statusText}\n<< Error Details >>${err.response.data.error}\n`)
+          console.log(
+            `Cannot register new user\n` +
+              `Error: ${err.response.status} - ${err.response.statusText}\n` +
+              `<< Error Details >>${err.response.data.error}\n`
+          )
         );
     } catch (e) {
       return console.log(e);
@@ -28,7 +32,9 @@ module.exports = {
             .then(({ data }) => console.log(data.message))
             .catch((err) =>
               console.log(
-                `Cannot delete created user\nError: ${err.response.status}. ${err.response.statusText}\n<< Error Details >>${err.response.data.error}\n`
+                `Cannot delete created user\n` +
+                  `Error: ${err.response.status} - ${err.response.statusText}\n` +
+                  `<< Error Details >>${err.response.data.error}\n`
               )
             );
         } catch (e) {
@@ -44,7 +50,11 @@ module.exports = {
         .post(`${serverUrl}/auth/login`, { email, password })
         .then(() => console.log("Login Successful"))
         .catch((err) =>
-          console.log(`Cannot login user\nError: ${err.response.status}. ${err.response.statusText}\n<< Error Details >>${err.response.data.error}\n`)
+          console.log(
+            `Cannot login user\n` +
+              `Error: ${err.response.status} - ${err.response.statusText}\n` +
+              `<< Error Details >>${err.response.data.error}\n`
+          )
         );
     } catch (e) {
       return console.log(e);
