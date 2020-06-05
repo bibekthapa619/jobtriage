@@ -32,10 +32,9 @@ Given("the user has browsed to the login page", () => {
 });
 
 When("the user logs in with the following credentials:", (table) => {
-  let tableData = {};
-  table.parse().raw().forEach(function(data) { tableData[data[0]] = data[1] });
-  email = tableData.email;
-  password = tableData.password;
+  let usersTable = table.parse().hashes();
+  email = usersTable[0].email;
+  password = usersTable[0].password;
   loginPage.login(email, password);
 });
 

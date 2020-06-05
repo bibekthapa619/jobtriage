@@ -15,21 +15,21 @@ Feature: login a user
      @invalidLogin
      Scenario: login with invalid credentials
           When the user logs in with the following credentials:
-               | email    | user1@gmail.com |
-               | password | passwo          |
+               | email           | password |
+               | user1@gmail.com | passwo   |
           Then the user should stay on the login page
 
      @blankEmailLogin
      Scenario: login with blank email
           When the user logs in with the following credentials:
-               | email    |          |
-               | password | password |
+               | email | password |
+               |       | password |
           Then the user should stay on the login page
 
      @blankPasswordLogin
      Scenario: login with blank password
           When the user logs in with the following credentials:
-               | email    | user1@gmail.com |
-               | password |                 |
+               | email           | password |
+               | user1@gmail.com |          |
           Then the user should stay on the login page
 
