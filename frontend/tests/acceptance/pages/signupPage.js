@@ -10,8 +10,8 @@ module.exports = {
       '//label[contains(text(),"Confirm password")]/parent::div//input[contains(@class, "MuiInputBase-input")]',
   },
   elements: {
-    error_label: '//form/p[@class="makeStyles-error-5"]',
-    login_label: '//form/p/span[contains(@class,"makeStyles-span-7")]',
+    error_label: '//form/p[contains(@class,"makeStyles-error-")]',
+    login_label: '//form//span[contains(.,"Login here")]',
     signup_button: '//form/button/span[contains(.,"Sign Up")]',
   },
   async signUp(name, email, password, confirmPassword) {

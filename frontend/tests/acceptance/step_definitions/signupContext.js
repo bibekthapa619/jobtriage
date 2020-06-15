@@ -34,6 +34,8 @@ Then("the user should be redirected to login page", () => {
 
 Then("the user should be redirected to dashboard", async () => {
   I.seeInCurrentUrl(dashboard.url);
+  I.waitForText("Dashboard");
+  I.see("Dashboard");
 });
 
 Then("the user should be able to login with email {string} and password {string}", (email, password) => {
