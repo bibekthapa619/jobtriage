@@ -1,7 +1,5 @@
 const axios = require("axios");
-const { users } = require("../globals");
-
-const serverUrl = process.env.API_SERVER_URL || "http://localhost:3000";
+const { users, serverUrl } = require("../globals");
 
 module.exports = {
   registerUser: (name, email, password) => {
