@@ -26,10 +26,9 @@ module.exports = {
 	clickSubmit() {
 		I.waitForVisible(this.buttons.submit);
 		I.click(this.buttons.submit);
-  },
-  addPitchText(text)
-  {
-    I.waitForVisible(this.fields.editPitchText);
-    I.fillField(this.fields.editPitchText,text)
-  }
+	},
+	addPitchText(text) {
+		I.waitForVisible(this.fields.editPitchText);
+		I.fillField(this.fields.editPitchText, text);
+	},
 };
