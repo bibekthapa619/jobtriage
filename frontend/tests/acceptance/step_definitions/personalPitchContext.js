@@ -2,23 +2,23 @@ const { I } = inject();
 const selfAnalysisPage = require("../pages/selfAnalysisPage");
 const personalPitchPage = require("../pages/personalPitchPage");
 
-Given("the user has browsed to the selfanalysis page", () => {
+Given("the user has browsed to the self-analysis page", () => {
 	I.amOnPage(selfAnalysisPage.url);
 });
 
-Given("the user has clicked on edit pitch button using webUI", () => {
+Given("the user has opened pitch edit form using the webUI", () => {
 	personalPitchPage.clickEditPersonalPitch();
-});
-
-Given("the pitch textfield has appeared in the webUI", () => {
 	I.seeElement(personalPitchPage.fields.editPitchText);
 });
 
-When("the user submits a personal pitch {string}", (pitch) => {
-  personalPitchPage.addPitchText(pitch);
-  personalPitchPage.clickSubmit();
+When("the user submits a personal pitch with text {string}", (text) => {
+	personalPitchPage.addPitchText(text);
+	personalPitchPage.clickSubmit();
 });
 
-Then("the personal pitch field should show the text {string}", (text) => {
-	I.see(text,personalPitchPage.fields.pitchText);
-});
+Then(
+	"the personal pitch with the text {string} should be visible on the webUI",
+	(text) => {
+		I.see(text, personalPitchPage.fields.pitchText);
+	}
+);

@@ -5,14 +5,13 @@ Feature: Personal pitch
   Background:
     Given the user has signed up with name "user1", email "user1@gmail.com" password "password"
     And the user has logged in with email "user1@gmail.com" and password "password"
-    And the user has browsed to the selfanalysis page
+    And the user has browsed to the self-analysis page
 
-  @addPersonalPitch
-  Scenario Outline: add a personal pitch
-    Given the user has clicked on edit pitch button using webUI
-    And the pitch textfield has appeared in the webUI
-    When the user submits a personal pitch "<pitch>"
-    Then the personal pitch field should show the text "<pitch>"
+  @editPersonalPitch
+  Scenario Outline: edit personal pitch
+    Given the user has opened pitch edit form using the webUI
+    When the user submits a personal pitch with text "<pitch>"
+    Then the personal pitch with the text "<pitch>" should be visible on the webUI
     Examples:
       | pitch                         |
       | Hello, I'm a SQA engineer     |
